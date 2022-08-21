@@ -15,7 +15,8 @@
 	</style>
 	<script>
 		let canvas, context;
-		let loc, bgImg;
+		let loc;
+		let bgImg = new Image();
 		let paused;
 		//let puzzles = [1, 2, 3];
 		//let puzzles = [{type: "img", x: 600, y: 300, width: 100, height: 100}];
@@ -34,7 +35,6 @@
 		}
 
 		function showBackground() {
-			bgImg = new Image();
 			bgImg.src = "../img/bg_" + loc + ".jpg";
 			bgImg.onload = function () {
 				context.drawImage(bgImg, 0, 0, 800, 450);
@@ -80,6 +80,7 @@
 				loc = 1;
 			else
 				loc = 0;
+			showBackground();
 		}
 
 		document.addEventListener("click", function (event) {
