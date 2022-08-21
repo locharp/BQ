@@ -51,9 +51,9 @@ function showImage(eventNum) {
     //alert(eventNum);
     let eventImage = new Image();
     eventImage.src = "../img/event_" + eventNum + ".jpg";
-    let x = (canvas.width - eventImage.naturalWidth) / 2;
-    let y = (canvas.height - eventImage.naturalHeight) / 2;
     eventImage.onload = function () {
+	let x = (canvas.width - eventImage.naturalWidth) / 2;
+	let y = (canvas.height - eventImage.naturalHeight) / 2;
 	context.drawImage(eventImage, x, y);
     };
 }
