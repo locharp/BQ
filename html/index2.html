@@ -56,9 +56,8 @@
       function showGameEvent(i) {
 	  //alert(loc + ", " + i);
 	  //let eventNum = (loc + 1) * 10 + i;
-	  let eventNum = loc;
 	  switch (puzzles[loc][i].type) {
-	      showImage(eventNum);
+	  case "img": showImage(loc);
 	      break;
 	  }
       }
