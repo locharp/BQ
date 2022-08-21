@@ -36,9 +36,11 @@
 
       function showBackground() {
 	  bgImg.src = "../img/bg_" + loc + ".jpg";
+	  context.drawImage(bgImg, 0, 0, 800, 450);
+	  /*
 	  bgImg.onload = function () {
 	      context.drawImage(bgImg, 0, 0, 800, 450);
-	  };
+	  };*/
       }
 
       function checkTriggers(x, y) {
@@ -64,7 +66,7 @@
 
       function showImage(eventNum) {
 	  //alert(eventNum);
-	  eventImage = new Image();
+	  let eventImage = new Image();
 	  eventImage.src = "../img/event_" + eventNum + ".jpg";
 	  let x = (canvas.width - eventImage.naturalWidth) / 2;
 	  let y = (canvas.height - eventImage.naturalHeight) / 2;
