@@ -1,74 +1,82 @@
-    let canvas, context;
-    let loc, bgImg;
-    let puzzles
-    let paused;
+let canvas, context;
+let loc;
 
-    window.onload = function() {
-      canvas = document.getElementById("canvas");
-      context = canvas.getContext("2d");
-      newGame();
-    }
+let paused;
+//let puzzles = [1, 2, 3];
+//let puzzles = [{type: "img", x: 600, y: 300, width: 100, height: 100}];
+let puzzles = [[{ type: "img", x: 0, y: 0, width: 100, height: 100 }, { type: "img", x: 700, y: 0, width: 100, height: 100 }, { type: "img", x: 0, y: 350, width: 100, height: 100 }, { type: "img", x: 700, y: 350, width: 100, height: 100 }], [{ type: "img", x: 200, y: 175, width: 100, height: 100 }, { type: "img", x: 500, y: 175, width: 100, height: 100 }]];
 
-    function newGame() {
-      loc = 1;
-      paused = false;
-      showBackground();
-    }
-	
-    function showBackground() {
-      bgImg = new Image();
-      bgImg.src = "../img/bg_" + loc + ".jpg";
-      bgImg.onload = function() {
+window.onload = function () {
+    canvas = document.getElementById("canvas");
+    context = canvas.getContext("2d");
+    newGame();
+}
+
+function newGame() {
+    loc = 0;
+    paused = false;
+    showBackground();
+}
+
+function showBackground() {
+    let bgImg = new Image();
+    bgImg.src = "../img/bg_" + loc + ".jpg";
+    bgImg.onload = function () {
 	context.drawImage(bgImg, 0, 0, 800, 450);
-      };
-    }
+    };
+}
 
-    function drawImage(eventImage, x, y) {
-      context.drawImage(eventImage, x, y);
-    }
-
-    function checkTriggers(click) {
-      for (let i = 0; i < puzzles[loc].length; i++) {
-	if (click.x >= puzzles[loc][i].x1
-	 && click.x <= puzzles[loc][i].x2
-	 && click.y >= puzzles[loc][i].y1
-	 && click.y <= puzzles[loc][i].y2) {
-	  paused = true;
-	  showGameEvent(loc, i);
+function checkTriggers(x, y) {
+    for (let i = 0; i < puzzles[loc].length; i++) {
+	if (x >= puzzles[loc][i].x &&
+	    x <= puzzles[loc][i].x + puzzles[loc][i].width &&
+	    y >= puzzles[loc][i].y &&
+	    y <= puzzles[loc][i].y + puzzles[loc][i].height) {
+	    paused = true;
+	    showGameEvent(i);
 	}
-      }
     }
+}
 
-    function showGameEvent(loc, i) {
-      let eventNum = loc * 10 + i;
-      showImage(eventNum);
+function showGameEvent(i) {
+    //alert(loc + ", " + i);
+    //let eventNum = (loc + 1) * 10 + i;
+    switch (puzzles[loc][i].type) {
+    case "img": showImage(loc);
+	break;
     }
+}
 
-    function showImage(eventNum) {
-      eventImage = new Image();
-      eventImage.src = "../img/event_" + eventNum + ".jpg";
-      let eventImageWidth;
-      let eventImageHeight;
-      let x = (canvas.width - eventImageWidth) / 2;
-      let y = (canvas.height - eventImageHeight) / 2;
-    //  let x = canvas.width / 20 * 3;
-    //  let y = canvas.height / 20 * 3;
-      eventImage.onload = function() {
+function showImage(eventNum) {
+    //alert(eventNum);
+    let eventImage = new Image();
+    eventImage.src = "../img/event_" + eventNum + ".jpg";
+    let x = (canvas.width - eventImage.naturalWidth) / 2;
+    let y = (canvas.height - eventImage.naturalHeight) / 2;
+    eventImage.onload = function () {
 	context.drawImage(eventImage, x, y);
-      };
-    }
+    };
+}
 
-    document.addEventListener("click", function(e) {
-      if (paused) {
+function changeLoc() {
+    if (loc == 0)
+	loc = 1;
+    else
+	loc = 0;
+    showBackground();
+}
+
+document.addEventListener("click", function (event) {
+    if (paused) {
 	paused = false;
 	showBackground();
-      } else {
-	let click;
-	checkTriggers(click);
-      }
-    })
-
-    function test() {
-       document.getElementById("cout").innerHTML = "loaded";
+    } else {
+	let x = event.clientX - canvas.getBoundingClientRect().left;
+	let y = event.clientY - canvas.getBoundingClientRect().top;
+	checkTriggers(x, y);
     }
+})
 
+function test() {
+    document.getElementById("test").innerHTML = "working";
+}
