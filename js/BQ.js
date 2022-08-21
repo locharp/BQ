@@ -1,9 +1,6 @@
 let canvas, context;
 let loc;
-
 let paused;
-//let puzzles = [1, 2, 3];
-//let puzzles = [{type: "img", x: 600, y: 300, width: 100, height: 100}];
 let puzzles = [[{ type: "img", x: 0, y: 0, width: 100, height: 100 }, { type: "img", x: 700, y: 0, width: 100, height: 100 }, { type: "img", x: 0, y: 350, width: 100, height: 100 }, { type: "img", x: 700, y: 350, width: 100, height: 100 }], [{ type: "img", x: 200, y: 175, width: 100, height: 100 }, { type: "img", x: 500, y: 175, width: 100, height: 100 }]];
 
 window.onload = function () {
@@ -39,8 +36,6 @@ function checkTriggers(x, y) {
 }
 
 function showGameEvent(i) {
-    //alert(loc + ", " + i);
-    //let eventNum = (loc + 1) * 10 + i;
     switch (puzzles[loc][i].type) {
     case "img": showImage(loc);
 	break;
@@ -76,7 +71,3 @@ document.addEventListener("click", function (event) {
 	checkTriggers(x, y);
     }
 })
-
-function test() {
-    document.getElementById("test").innerHTML = "working";
-}
