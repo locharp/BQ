@@ -16,7 +16,7 @@ function newGame() {
 }
 
 function showBackground() {
-    let bgImg = new Image();
+    let bgIamge = new Image();
     bgImage.src = "../img/bg_" + loc + ".jpg";
     bgImage.onload = function () {
 	context.drawImage(bgIamge, 0, 0, 800, 450);
