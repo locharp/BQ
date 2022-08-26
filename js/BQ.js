@@ -1,4 +1,4 @@
-let canvas, context;
+let canvas, context, canvasWidth, canvasHeight;
 let loc;
 let paused;
 let puzzles = [[{ type: "img", x: 0, y: 0, width: 100, height: 100 }, { type: "img", x: 700, y: 0, width: 100, height: 100 }, { type: "img", x: 0, y: 350, width: 100, height: 100 }, { type: "img", x: 700, y: 350, width: 100, height: 100 }], [{ type: "img", x: 200, y: 175, width: 100, height: 100 }, { type: "img", x: 500, y: 175, width: 100, height: 100 }]];
@@ -6,6 +6,8 @@ let puzzles = [[{ type: "img", x: 0, y: 0, width: 100, height: 100 }, { type: "i
 window.onload = function () {
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
+    canvasWidth = 800;
+    canvasHeight = 450;
     newGame();
 }
 
@@ -18,11 +20,12 @@ function newGame() {
 function showBackground() {
     let bgIamge = new Image();
     bgImage.src = "../img/bg_" + loc + ".jpg";
+    context.clearRect(0, 0, canvasWidth, canvasHeight)
     bgImage.onload = function () {
-	context.drawImage(bgIamge, 0, 0, 800, 450);
+	context.drawImage(bgIamge, 0, 0, canvaWidth, canvasHeight);
     };
 }
-/*
+
 function checkTriggers(x, y) {
     for (let i = 0; i < puzzles[loc].length; i++) {
 	if (x >= puzzles[loc][i].x &&
@@ -48,8 +51,8 @@ function showImage(eventNum) {
     let eventImage = new Image();
     eventImage.src = "../img/event_" + eventNum + ".jpg";
     eventImage.onload = function () {
-	let x = (canvas.width - eventImage.naturalWidth) / 2;
-	let y = (canvas.height - eventImage.naturalHeight) / 2;
+	let x = (canvasWidth - eventImage.naturalWidth) / 2;
+	let y = (canvasHeight - eventImage.naturalHeight) / 2;
 	context.drawImage(eventImage, x, y);
     };
 }
@@ -72,4 +75,3 @@ document.addEventListener("click", function (event) {
 	checkTriggers(x, y);
     }
 })
-*/
