@@ -17,9 +17,9 @@ function newGame() {
 
 function showBackground() {
     let bgImg = new Image();
-    bgImg.src = "../img/bg_" + loc + ".jpg";
-    bgImg.onload = function () {
-	context.drawImage(bgImg, 0, 0, 800, 450);
+    bgImage.src = "../img/bg_" + loc + ".jpg";
+    bgImage.onload = function () {
+	context.drawImage(bgIamge, 0, 0, 800, 450);
     };
 }
 
