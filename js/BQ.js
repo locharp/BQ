@@ -22,7 +22,7 @@ function showBackground() {
 	context.drawImage(bgIamge, 0, 0, 800, 450);
     };
 }
-
+/*
 function checkTriggers(x, y) {
     for (let i = 0; i < puzzles[loc].length; i++) {
 	if (x >= puzzles[loc][i].x &&
@@ -72,3 +72,4 @@ document.addEventListener("click", function (event) {
 	checkTriggers(x, y);
     }
 })
+*/
