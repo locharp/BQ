@@ -22,7 +22,7 @@ function showBackground() {
     bgImage.src = "../img/bg_" + loc + ".jpg";
     context.clearRect(0, 0, canvasWidth, canvasHeight);
     bgImage.onload = function () {
-	context.drawImage(bgIamge, 0, 0, canvaWidth, canvasHeight);
+	context.drawImage(bgIamge, 0, 0, canvasWidth, canvasHeight);
     };
 }
 
