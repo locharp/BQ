@@ -36,14 +36,14 @@ function checkTriggers(x, y) {
 }
 
 function showGameEvent(i) {
+    int eventNum = loc * 10 + i;
     switch (puzzles[loc][i].type) {
-    case "img": showImage(loc);
+    case "img": showImage(eventNum);
 	break;
     }
 }
 
 function showImage(eventNum) {
-    //alert(eventNum);
     let eventImage = new Image();
     eventImage.src = "../img/event_" + eventNum + ".jpg";
     eventImage.onload = function () {
