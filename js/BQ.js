@@ -40,7 +40,6 @@ function checkTriggers(x, y) {
 
 function showGameEvent(i) {
     let eventNum = loc * 10 + i;
-    alert(eventNum);
     switch (puzzles[loc][i].type) {
     case "img": showImage(eventNum);
 	break;
