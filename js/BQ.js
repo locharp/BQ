@@ -9,7 +9,6 @@ window.onload = function () {
     canvasWidth = 800;
     canvasHeight = 450;
     newGame();
-    alert("hi");
 }
 
 function newGame() {
