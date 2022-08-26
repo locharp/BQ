@@ -18,11 +18,11 @@ function newGame() {
 }
 
 function showBackground() {
-    let bgIamge = new Image();
+    let bgImage = new Image();
     bgImage.src = "../img/bg_" + loc + ".jpg";
     context.clearRect(0, 0, canvasWidth, canvasHeight);
     bgImage.onload = function () {
-	context.drawImage(bgIamge, 0, 0, canvasWidth, canvasHeight);
+	context.drawImage(bgImage, 0, 0, canvasWidth, canvasHeight);
     };
 }
 
